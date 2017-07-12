@@ -1,0 +1,88 @@
+javascript 事件
+javascript 与 html之间交互是通过事件实现的。
+js事件三要素: 事件源、事件、事件处理程序三部分组成。
+事件源:指的是发生事件的对象。
+事件:指的是做了什么动作
+事件处理程序:发生事件时要做的事。
+
+js事件处理
+事件处理四种方式：
+1.在HTML事件处理，即将事件添加到HTML结构签中
+2.DOM0级的事件处理程序，把函数赋值给一个事件处理程序
+3.DOM2级的事件处理程序
+添加事件: obj.addEventListener("事件名","事件处理函数","布尔值");
+移除事件:  obj.removeEventListener("事件名","事件处理函数","布尔值");
+  布尔值 true 则表示事件捕获方式 false 表示事件冒泡(大多数)。
+4.IE事件处理程序
+添加事件: obj.attachEvent("on事件名","事件处理函数");
+移除事件: obj.detachEvent("on事件名","事件处理函数");
+
+DOM0级对同一个事件只能注册一个函数，若注册多个仅最后一个有效。对于DOM0级绑定的on事件
+没有特定的解除方法，只能再其内部重新添加方法等于 null 来覆盖掉之前的函数。
+
+node节点
+整个文档都是由节点组成，包括元素(HTML标签)节点，文字节点，属性节点。
+每一个节点都有一个nodeType属性，用于表明节点的类型。节点类型由在Node类型中定义的12个数值
+常量表示，任何节点类型都必在其中。
+
+查看一个元素的节点类型方法是 obj.nodeType 打印该结果会获得相对应的数值其中
+Node.ELEMENT_NODE(1)；Node.TEXT_NODE(3)；Node.DOCUMENT_NODE(9)；
+
+获得节点
+1.document.getElementById("id") id为标记的#id (获得的是元素本身)
+2.document.getElementsByClassName("test") 所有类名为test (包含所有test的一个数组)
+3.document.getElementsByTagName("div") 所有的div div (包含所有div的一个数组)
+对于数组形式获取的 类 或者 标签tag 都可以指定范围然后只获取当前范围内的元素，在其父元素节点
+的后面直接搜索需要的元素就可以，不需要在写document了。
+
+节点的访问
+1.父节点 parentNode;
+parentNode 接口包含了只能对有子节点的节点 (Node) 对象有效的方法，可获得当前元素的父元素。
+2.兄弟节点
+下一个兄弟 nextSibling 和 nextEleventSibling
+上一个兄弟 previousSibling 和 previousElementSibling
+对于带Element 和 不带Element的区别，如果带Element，那么获得上一个节点或者下一个节点一定会
+是元素节点，不包含文本节点，但是如果不带Element，在有文本节点的情况下，先选择文本节点，若没有
+文本节点，则选择元素节点。
+3.第一个节点和最后一个节点
+第一个节点 firstChild 和 firstElementChild;
+最后一个节点 lastChild 和 lastElementChild;
+这里的有无Element与兄弟节点效果相同。
+4.父元素的所有子节点
+childNodes 和 children
+其中 childNodes 会获得其父元素内的所有节点，包括文本节点。
+而 children 只会获得当前父元素内的元素节点。
+
+DOM节点操作
+1.创建节点
+document.createElement() 方法创建一个元素节点。
+2.添加节点
+Node.appendChild() 方法将一个节点添加到指定节点的末尾，其添加参数必须是DOM对象，不可以是
+其他的。
+Node.insertBefore() 方法在当前节点的某个子节点之前再插入一个节点，其Node必须为当前添加节点
+的父元素，()括号内有两个参数，第一个是要添加的节点，第二个是在哪个节点位置添加这个节点。
+3.删除节点
+Node.removeChild() 方法从DOM中删除一个子节点，返回删除的节点。
+let oldChild = node.removeChild(child);
+child是要移除的子节点 node是child的父节点。
+
+innerHTML修改文本样式
+innerHTML在js中是双向功能，获取对象的内容或向对象插入内容。
+在获取的DOM对象后面直接 obj.innerHtml = "这是插入的内容"， 等于后面就是要插入或者替换的
+内容。
+直接 var html = obj.value; 是获取文本内容。
+
+value获得form元素的内容
+对于js获得其内容直接 obj.value; 就可以。
+
+对于js中，如果想要获得除自己之外的兄弟元素，可以使用 for 循环，然后在事件内在写一个for循环，当
+第一个for循环里的 i 不等于第二个for循环里的 j 的时候 ( i != j )，  那么此时的 j 就是兄弟元
+素，而 i 则是当前事件本身。
+
+对于for循环中的方法，其循环的变量一直是打印的最后一个结果，解决这个问题一共有三种解决办法:
+1.使用一个立即函数 (function(arg){ })(arg); 立即函数，立即被调用，而且只调用一次。这样的话
+每循环一次都会传入当时的变量，都会调用一次该函数，解决变量不变的问题。
+2.因为对象都有属性和方法，可以对操作的每一个对象自定义添加一个属性，让其等于循环的变量，然后操
+作的时候正常操作把需要的循环的变量变成我们自定义的属性 this.xxx，也可以解决这个问题。
+3.第三种就是利用jQuery中的 event.data方法， 在方法的前面传入变量， function(event){}的
+参数为event，每次用到循环的变量的时候，改为event.data就可以了，也可以解决这个问题。

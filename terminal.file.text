@@ -1,0 +1,46 @@
+windows 系统中 目录是属于分区的
+linux 系统中 分区是属于目录的 所有的文件都是在根目录下的(/)
+
+terminal 操作
+pwd   列出所在路径的绝对路径
+ls    列出当前目录下的所有文件
+touch 创建文件
+cd    切换目录
+.     当前访问的目录
+..    上级目录
+cp    复制文件 cp ____(file name) 拷贝的目录
+(如果要拷贝文件改名的话 拷贝到目录后直接接 new name)
+mv    重命名   mv ____(file name) ____(new name)
+mv    剪 切   mv ____(file name) ____ 剪切的目录
+rm    删除  rm ____(file name)
+rm -rf ____  (-rf参数表示递归强制删除)
+mkdir 创建文件夹
+tar   对文件和目录进行压缩和解压缩
+ls -l ____(file name)  可以查看一个文件的详细信息
+man   可以查看手册
+tar czvf ___.tar.gz ___   压缩文件
+tar xvf ___(压缩包 name)   解压缩文件
+ifconfig   查看当前ip地址
+
+Linux中的软件包管理机制
+du -mh ___ (file name)   查看文件大小
+Deb软件包机制，常用dpkg, apt
+本地安装:
+sudo dpkg -i _____(安装包名字)    安装本地软件指令
+sudo dpkg -r _____(安装包名字)    卸载安装软件(单纯卸载)
+sudo dpkg -P _____(安装包前缀)    卸载安装软件(纯粹卸载)
+在现安装:
+sudo apt-get update     更新本地软件资源
+sudo apt-get install ____(安装包 name)   软件安装包安装
+安装软件时 如果出现兼容性问题 则需要输入一行 sudo apt-get install -f
+sudo apt-get remove --purge ____(安装包 name)   软件包彻底卸载
+
+sudo apt-get install openssh-server openssh-client 安装一个可交互的连接软件
+操作如下:
+$ ssh ____@____    ssh + 对方的用户名与对方的IP地址 例: ssh linux@192.168.1.135
+输入yes后就可以操作对方的电脑内容删除或者添加
+$ exit 注销对方terminal
+复制对方电脑中的文件 首先要知道对方的文件内容 (如果该文件是文件夹 要+ -r)
+$ scp ____@____:/home/linux/____   .  例 scp linux@192.168.1.135:/home/linux/ .
+给对方电脑传送文件
+$ scp -r ___ ___@___:/home/linux/    例 scp -r one(要传的文件夹) linux@192.168.1.135:/home/linux/

@@ -1,0 +1,19 @@
+canvas操作一共分为以下几步:
+1. 首先获得 canvat标签 这个DOM对象。
+2. 获得画布的上下文 定义一个变量接收 之前的DOM对象 xxx.getContext("2d");
+3. 开始绘制 在这个变量上的属性 name.beginPath();
+4. 定义起始位置 name.moveTo(x,y) x,y 为其在画布上起始的坐标。
+5. 如果画的是直线的画 那么 name.lineTo(x,y) x, y 为要结束的坐标，如果后面继续画的画，是在
+   这个点的接口继续画。
+6. 描边，如果不描边看不到线条 name.stroke();
+7. 对当前画的元素修改样式(颜色，border等) 需要用 name.lineWidth = 设置边框宽度。
+   name.srokeStyle = 可以设置当前线条的颜色。
+8. 对于图形要填充内部颜色使用 name.fill();
+
+canvas 直接绘制矩形的方法  name.rect(x,y,width,heigth); x ,y 是矩形的起始位置，width是
+矩形的宽， height为矩形的高。
+
+擦除画布的某个区域(该区域为自己指定区域范围) name.clearRect(x,y,width,height);
+
+也可以重新定义整个画布，那么之前的画布就没有了， 可以直接对 DOM对象操作属性，xxx.width = ?;
+xxx.height = ?; 得到的是一块新的画布。   

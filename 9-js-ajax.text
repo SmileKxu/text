@@ -1,0 +1,54 @@
+AJAX
+
+AJAX 是一种快速创建动态网页的技术，通过在后台与服务器进行少量数据交换，AJAX可以使网页实现异步
+更新，这就意味着在不重新加载整个页面的情况下，对网页的某部分进行更新。
+
+Ajax技术的核心是XMLHttpRequest对象(简称XHR)，可以通过XHR对象获得新数据，然后在通过DOM
+将新数据插入到页面中，从而达到不刷新页面也能取到新数据的效果。
+
+get方法发送请求
+
+1.首先要创建xhr对象。
+var xhr = createXHR();
+如果不兼容ie var xhr = new XMLHttpRequest();
+
+2.服务器向浏览器响应请求
+状态切换时，要执行的代码
+xhr.onreadystatechange = function(){
+   if (xhr.readyState == 4 ){
+     console.log(xhr.respanse);
+   }
+};
+
+3.浏览器与服务器建立连接
+然后使用open方法创建一个异步请求 (open方法不会发送请求)
+open()方法有三个参数: 1.发送的请求类型(get、post等) 2.请求的URL 3.表示是否异步发送请求的
+布尔值
+xhr.open("get", url, true);
+
+4.浏览器向服务器发送请求
+最后使用send方法发送一个http请求
+异步请求会在请求发送后立即返回，而同步请求直到响应到达后才会返回，默认情况下是异步请求。
+对于get 和 head请求方法，请求主体内参数设置为null。
+xhr.send(null);
+
+对get的发送请求方法，传入open()方法的url末尾的查询字符必须经过正确的编码这就需要一个辅助编码
+函数。
+
+post方法发送请求
+post通常用于像服务器发送应该被保存的数据，post请求应该把数据作为请求主体提交，而get请求传统上
+不是这样。post请求的主体可以包含非常多的数据，而且格式不限。
+
+post数据传输要使用open方法创建一个异步请求
+
+然后需要设置post数据的传输格式
+xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded"),就是
+表单提交时的内容类型。
+
+最后send提交http请求
+xhr.send(); 括号内为序列化的表单数据字符串。//格式"name=value&name=value&name=value"
+
+在老师给的后台server.js文件部分，为了查看前台代码是否发送成功 要在server.js文件夹内打开
+终端 运行 node server.js 检测端口号 然后就可以查看前端发送的代码了
+
+ajax缺点: ajax在获得数据的时候页面不会更新，这就说明使用ajax获得数据不会留下历史记录

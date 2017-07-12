@@ -1,0 +1,60 @@
+jQuery中的Ajax方法
+jQuery.ajax()的基本参数如下:
+jqXHR (在 jQuery 1.4.x中是 XMLHTTPRequest)
+
+url
+类型: String   一个用来包含发送请求的url字符串。(发送请求的地址)
+
+settings
+类型: PlainObject   一个以"{键:值}"组成的AJAX请求设置。
+
+async(默认:true)
+类型:Boolean   默认设置下，所有请求均为异步请求(默认为true)。如果需要发送同步请求
+，可以将该选项设置为false。
+
+beforeSend
+类型:Function(jqXHR, settings)  请求发送前的回调函数，用来修改请求发送前的jqXHR对象，
+可以用来自定义HTTP头信息等。
+
+complete
+类型:Function(jqXHR, textStatus)  请求完成后回调函数(请求success和error之后均调用)。
+这个回调函数有两个参数：jqXHR对象和一个描述请求状态的字符串。
+
+data
+类型: PlainObject 或 String 或Array   发送到服务器的数据。会被转换成一个查询字符串，查询
+字符串将被追加到get请求的url后面。
+
+error
+类型: Function(jqXHR, textStatus, errorThrown)    请求失败时调用此函数。jqXHR对象、
+描述发生错误类型的一个字符串和捕获的对象。如果发生了错误，错误信息(第二个参数)除了得到null
+之外，还可能是"timeout","error","about",和"parsererror"。当一个HTTP错误发生时,error
+Thrown接收HTTP状态的文本部分。
+
+mythed
+类型: String HTTP请求方法(比如: "post","get","put")。
+
+type(默认："get")
+类型:String   type是mythed选项的别名。如果使用jquery 1.9.0之前的版本，需要使用type选项
+
+success
+类型: Function(data, textStatus, jqXHR)    请求成功后的回调函数。这个函数传递三个参数:
+data从服务器返回的数据，并根据dataType参数进行处理后的数据或dataFilter回调函数，textStatus
+一个描述状态的字符串和jqXHR。
+
+.done()方法和.fail()方法正在取代 .success方法和.error()方法。
+在响应一个成功的请求后 .done()的参数也是:data，textStatus和jqXHR对象。
+对于一个失败的请求， .fail()的参数也是:jqXHR对象，textStatus和errorThrown。
+
+.then()方法包含了.done()和.fail()方法的功能，允许底层被操纵。
+jqXHR.then(function(data, textStatus, jqXHR){
+
+},function(jqXHR, textStatus,errorThrown){
+
+});
+
+在jquery的ajax事件中 $.ajax({ }); 花括号内的代码区分连接都要以,隔开 不是;号
+
+对于ajax中 .then()方法提交数据，其then中的两个函数书写是有顺序的，第一个函数写成功的参数
+第二个函数写失败的参数。
+
+jquery 中的 .load()方法 从服务器载入数据并且将返回的HTML代码插入至匹配的元素中

@@ -1,0 +1,78 @@
+对于标签的属性的获得、修改与添加，javascript中可以使用 getAttribut, setAttribute 和
+removeAttribute 这三个方法。
+getAttribute()获得属性，使用时 () 括号内部直接输入想要获得属性的属性名就可以。
+setAttribute()设置属性，使用时 () 括号内部有两个参数，第一个参数是要设置的属性名称，第二
+个参数是要设置的属性值，可以设置多个属性值中间以空格分开。
+removeAttribute()移除属性，使用时 () 括号内为要移除的属性名称。
+
+javascript中获得类名的方法 obj.className , obj为获得的 DOM 对象。
+
+classList: 可以便捷地访问一个元素的class列表，可以对class列表进行添加、移除。
+classList 具有以下方法:
+classList.add() 添加一个或多个 class 到元素的class 列表中，其添加方式是在 () 括号内以引号
+的形式输入添加的属性名称，若添加多个需要用 , 逗号隔开。
+classList.remove() 从元素的 class 列表中移除一个或多个 class，其移除的书写方式与添加的书写
+方式相同。
+classList.toggle() 若class 列表中没有这个 class 那么添加 若存在这个 class 则移除。其()
+括号内为添加或移除的 class。
+
+自定义属性
+对于属性的获得，JavaScript可以使用如上的 getAttribute()方法，HTMLElement.dataset 属性
+允许我们访问所有在元素上自定义的 data 属性(这是属性一般以 data- 开头)。也只对 data- 开头的
+属性有效。其获得的结果是一个对象，属性和属性值以键值对的形式呈现。这就意味这其属性值可以直接使用
+对象的方式来修改和增加，其获得的对象 data 都会被取消，名称会以驼峰法命名。- 连接的多个名称会被
+转换成驼峰法。
+对于这种以 data- 开头的属性，修改添加就按照对象的方式就可以。
+
+查看选择的文件信息，files属性可以得到所选中的文件，xxx.files 其 xxx是获得 file 标签的DOM
+对象， xxx.files.name 可以获得获得文件的名字， xxx.files.size 可以获得获得文件的大小,获得
+**文件名字和获得文件大小必需要写在一个for循环里面来获得，不然的话无法获得。
+
+若要读取选中文件的内容，需要以下几步:
+首先需要创建一个变量 ，将获得的文件赋值给该变量。这个变量就是要读取其内容的。
+1. 创建一个 reader对象， var reader = new FileReader();
+2. 注册一个读取完毕的事件，在这个时间内部就是读取的结果，如下:
+   reader.onload = function(){
+     console.log(reader.result); // reader.result 就是读取结果。
+   }
+3. 以什么方式读取内容。读取内容可以采用文本、图片、以及二进制方式，其方法如下:
+   以文本方式读取: reader.readAsText(xxx);
+   以图片方式读取: reader.readAsDataURL(xxx);
+   以二进制方式读取: reader.readAsBinaryString(xxx);
+   xxx 为赋值获得文件的 变量。
+
+在HTML中，除了图片、超链接以及被选中的区域，其他元素默认是不可拖拽的。所有的XUL元素也都是可以
+拖拽的，为了让别的HTML元素也能被拖拽，必须进行以下三部:
+1. 为所需拖拽的元素设置 draggable = "true" 属性。
+2. 为 dragstart 事件添加侦听。
+3. 在侦听中设置拖拽数据。
+
+对于元素拖拽，首先要对准备拖拽的文件设置一个属性 draggable = "true"; 表示该元素准备拖拽。
+拖拽事件设置方面有两个，对拖拽的元素以及要拖拽到什么元素内 两个分别设置许多事件。下面先说对拖拽
+元素设置的事件:
+1. dragstart事件 表示拖拽的文件或元素开始被拖拽然后触发的事件。
+2. drag事件 表示只要鼠标不停止，那么被拖拽的文件就一直在触发着。
+3. dragend事件 表示鼠标离开时，拖拽元素出发的事件。
+
+对要拖拽到目的地的元素设置的事件:
+1. dragenter事件 是对拖拽目的的box进行设置的，该事件是当拖拽元素进入到box内部时就触发
+2. dragleave事件 也是对拖拽文件的box进行设置的，该事件是当拖拽元素离开box时就触发
+3. dragover事件 必须在dragover事件中，取消要拖拽目标的默认行为， xx.preventDefault();
+4. drop事件 最后的操作移动添加都写在drop 事件内。
+
+在文件的拖拽过程中，若要获得文件列表，需要用到 dataTransfer。在进行拖放操作中，DataTransfer
+对象用来保存被拖动的数据。他可以保存一项或多项数据、一种或多种数据类型。
+
+拖拽的事件有很多，但是在拖拽过程中，使用的主要是对要拖放的位置设置的 dragover事件 与 drop事件
+，在 dragover 事件中，要设置停止事件的默认行为、和停止事件冒泡两个操作。
+event.stopPropagation 取消冒泡 和 event.preventDefault 取消事件的默认行为。
+在 drop事件中，进行剩下的操作事件。
+
+dataTransfer也是一个对象类型，其上面也有方法和属性，setData() 和 getData()就是其具有的两个
+方法。
+setData()，为一个给定的类型设置数据。obj.setData(type, data);
+第一个参数 type 是要添加的数据类型， 第二个参数 data是要添加的数据。两个参数均为字符串类型。
+
+getData()， 检索(取得)给定类型的数据，如果给定类型的数据不存在或者数据转存(data transfer)
+没有包含数据，方法讲返回一个空字符串。obj.getData(type);
+其参数 type 就是要检索的数据类型。

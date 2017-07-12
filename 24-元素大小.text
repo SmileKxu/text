@@ -1,0 +1,32 @@
+offset属性
+对于javascript中的offset上的 offsetWidth 和 offsetHeight 这两个属性分别是获得当前DOM
+对象的content(本身的宽高)加上border(边框的尺寸)以及padding的内边距，也就是说，适应offset
+获得的是总的 width 或者是 height(包括内容、边框、padding)。其打印结果是一个数值(number)。
+
+而对于其offsetLeft 和 offsetTop 这两个属性，是子元素对当前最近(最近设置定位的)的父元素之间
+的左边距离与上边距离，offsetLeft 是当前元素的最左边与其最进的父元素的包含padding但是不算
+border的位置的距离，offsetTop 是当前元素的最上边与其最近的父元素包含padding但是不包含
+border的位置的距离。其实就是当前设置位移的距离。其打印结果是一个数值(number)。offsetLeft
+与 offsetTop 是只读的属性，若要修改其偏移值，那么只能使用DOM对象的 style 方法。
+
+offsetParent 属性可以打印出当前元素的父元素，打印结果是一个DOM对象。
+
+client属性
+对象上的 clientHeight 与 clientWidth 属性与 offsetHeight 和 offsetWidth 之间的区别就
+是，client属性获得的DOM对象的值不包含边框，只包含 内容(content) 和 内边距(padding)。其打印
+结果是一个数值(number)。
+
+对于直接获得DOM对象的内容宽高，需要先定义一个变量 xxx 赋予 window.getComputedStyle(obj),
+此时的obj是要知道宽高的DOM对象。然后打印时需要使用一个方法： xxx.getPropertyValue("height")
+获得内容高度， xxx.getPropertyValue("width"); 获得内容的宽度。其打印结果是一个带单位的字
+符串(string)。
+
+scroll属性
+对于滑轮的 scroll属性，获得其当前位置访问的是其父元素的 scrollLeft 和 scrollTop;其打印结果
+是一个数值(number)，若要设置这个属性值，可以直接赋值， xxx.scrollLeft = num; num为要设置
+的值。
+
+对于window上的滑轮，设置滑轮的位置可以只用 window.scrollTo(x,y);这个方法，其 x，与y 是滑轮
+横轴的位置与纵轴的位置。
+如果单独设置一个轴的滑轮位置或者获得 需要使用 document.body.scrollTop 或者
+document.body.scrollLeft; 就可以获得当前滑轮的位置。

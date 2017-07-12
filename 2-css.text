@@ -1,0 +1,49 @@
+引入外部css文件 css文件首先要写 @charset "utf-8";然后写css样式
+引入外部css文件 当前页面加载与引入css文件加载是同步进行的
+Inherited form ___  继承___ 的属性
+css三大特性: 继承  层叠  优先级
+继承
+页面中一些标签的属性可以继承给子元素,但是继承有一定的限制.
+其中a标签的颜色,块级元素的高度等不会被继承,需要单独设置.
+层叠
+页面的样式是多项属性设置进行叠加的结果
+优先级
+当设置发生冲突时,首先要考虑优先级,优先级最高的设置有效.
+基本公式: !important > style(行内样式) > id > class > 标签 > 继承 > 浏览器默认属性
+运行公式的条件:针对同一个标签的设置.
+优先级计算 当多个选择器共同设置样式时 默认的初始优先级为 0;
+出现一次 id + 100;
+出现一次 class + 10;
+出现一次 tag + 1;
+
+css font设置 font属性共同设置也要按照一定的顺序
+font-family 设置的字体为中文时要加引号.
+font共同设置 必须要设置 font-size 和font-family 不然设置无效;
+font:font-style font-weight font-size font-family;
+
+字间距 letter-spacing
+latter-spacing 属性用于定义字体间距,就是字符与字符之间的空白,默认为normal,可以设置负数.
+单词间距 word-spacing
+word-spacing 属性用于定位英文单词之间的距离,对中文字符无效,默认为normol,可以设置负数.
+letter-spacing 与 word-spacing 属性均可以对英文设置,letter-spacing 定义的为字母与
+字母之间的距离 而 word-spacing 定义的为英文单词之间的距离.
+
+文本装饰 text-decoration
+text-decoration属性 用于设置文本的下划线,上划线,删除线等装饰效果.
+none:无装饰 underline:下划线 overline:上划线 line-through:删除线
+text-decoration 可以一次赋多个属性 显示效果.
+
+水平对齐方式 text-align
+text-align 属性设置文本水平内容对齐
+left: 左对齐 center: 居中对齐 right: 右对齐
+
+行高 line-height
+line-height 用于设置字体最顶端距离与最低端的距离
+可以设置百分比%, px进行绝对设置, em相对设置, 不带单位的数值 四种设置方法
+line-height:120%; 表示行高为当前字体的1.2倍,子元素会继承计算后的行高.
+line-height:30px; 表示行高固定为30px,子元素会继承设置行高.
+line-height:1.5em; 表示行高为当前字体的1.5倍,子元素会继承计算后的行高.
+line-height:1.5; 表示行高因子为1.5,子元素会继承该因子而不是父元素的行高.
+
+首行缩进 text-indent
+text-indent属性用于设置文本的缩进,允许使用负值,可以设置百分比%,建议使用em.

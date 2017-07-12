@@ -1,0 +1,66 @@
+Bootstrap
+
+为了兼容ie老版本浏览器 所以要将改代码引入到页面中
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+媒体查询时引入的代码
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+以上三个meta标签必须放在最前面，任何其他内容都必须跟随其后
+
+然后还要引入其bootstrap的css文件。
+
+针对 ie浏览器设置的，html5shiv，respond 用于让低版本的ie浏览器兼容html5新元素和媒体查询
+<!--[if lt IE 9]>
+<script src="./js/html5shiv.min.js"></script>
+<script src="./js/respond.min.js"></script>
+<![endif]-->
+就是在注释里写的 只有在低版本的ie浏览器才会起作用。
+
+bootstrap栅格系统
+bootstrap 提供了一套响应式、移动设备优先的栅格系统，系统会自动分为最多12列。
+栅格系统用于通过一系列的行(row) 与列(column)组合来创建页面布局，其 行(row)必须
+包含在 .container(固定宽度) 或 .container-fluid(100%宽度)中。
+
+在栅格系统中，可以设置的不同的分界点 设置的小的分界点效果其大的分界点也会有其效果 但是只设置
+打的效果那么在小的效果中会自动按12份排列 每个都独占一行。
+
+在栅格系统中，如果一行(row)中包含的列(column)大于12，那么多余的列所在的元素将被作为一个整体
+另起一行排列。
+
+列偏移
+使用 .col-md-offset-*类可以将列向右侧偏移 根据当前所占份数 将列进行一定的偏移达到自己想要的
+位置。
+
+嵌套列
+为了使用内置的栅格系统将内容再次嵌套，可以通过添加一个新的 .row 和一系列 .col-sm-* 到已存在
+的 .col-sm-*内，被嵌套的行所包含的列的个数不能超过12.
+
+隐藏列
+对于超出部分或者想要隐藏的部分可以使用 hidden-* 想要在哪个范围内隐藏那么*就是那个范围 其后面
+不用接其他的东西 例： hidden-md 那么该列将在中屏的时候消失
+
+bootstrap 中存在许多的类 其样式都已经设置好了 在使用过程中直接引入就可以
+bootstrap中对于显示隐藏有直接的类 .show 显示 .hidden 隐藏 直接应用类就可以
+
+<mark></mark>标签内的内容会带有background。
+
+在使用bootstrap的时候，也会引入bootstrap的javaScript库，这时候要注意，必须按照顺序引用，
+先引用jquery，然后在引入bootstrap的js库。
+
+在bootstrap组件中，有很多样式，在使用时可以直接去库里寻找样式，然后在根据自己的需要进行修改。
+修改的时候要注意，尽量不要直接覆盖原有的样式，创建新的类，然后根据优先级的方法对其样式进行调节。
+
+对于字体图标，不仅可以引用bootstrap组件中的，还可以引入别的字体图标。
+在bootstrap组件引入字体图标，直接复制字体图标下面的那一组类，然后在要引入的地方引入该类，为了
+避免 屏幕识读设备抓取非故意的和可能产生混淆的输出内容（尤其是当图标纯粹作为装饰用途时），我们为
+这些图标设置了 aria-hidden="true" 属性。所以最好在后面接一个 aria-hidden="true"，就可以
+了。
+
+引入fontawesome库中的字体图标的时候，首先要下载fontawesome文件，下载后打开会发现好几个文件
+夹，其中字体库就在css和fonts这两个文件夹中，然后引入该库的 min.css文件。在引入其字体图标时，
+再其类中先引入 fa 然后后面接引入的字体图标的类 最后 fa-(n)x  nx 是调节当前字体图标的大小的，
+1x = 1em。
+
+WebP 的优势体现在它具有更优的图像数据压缩算法，能带来更小的图片体积，而且拥有肉眼识别无差异的
+图像质量；同时具备了无损和有损的压缩模式、Alpha 透明以及动画的特性，在 JPEG 和 PNG 上的转化
+效果都相当优秀、稳定和统一。

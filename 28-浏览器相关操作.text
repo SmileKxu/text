@@ -1,0 +1,74 @@
+浏览器内置对象 location，navigator，history
+location对象
+location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。
+location 是 window 上的一个属性，所以在操作过程时可以直接操作 location.xxx;
+location 具有如下属性:
+location.hash  返回的是 URL 中的hash(#号后跟零或多个字符)，如果URL中不包含散列，则返回空字符串。
+location.host    返回服务器名称和端口号
+location.hostname    返回不带端口号的服务器名称、
+location.href == location.toString()   返回的都是当前页面加载的完整URL。
+location.pathname    返回的是URL的目录和文件名
+location.search     返回一个URL的查询字符串，这个字符串是以 ? 问号开头。
+
+location 的方法:
+location.assign("xxx")   加载给定URL的内容资源到这个Location对象所关联的对象上,有历史记录
+location.hred = "xxx"    赋值的方式指定跳转页面，有历史记录。
+window.location = "xxx"  直接在 window.location 上也可以指定跳转页面，有历史记录。
+location.replace("xxx")  用给定的URL替换掉当前的资源，没有历史记录，直接替换掉了。
+
+location修改属性：修改任意一个属性都会刷新页面。
+
+navigator 现在已成为识别客户端浏览器的事实标准，每个浏览器的 navigator 对象都有一套自己的
+属性。
+navigator 属性:
+navigator.userAgent    浏览器代理；
+navigator.userLanguage    用户默认语言
+navigator.plugins      指的是浏览器安装插件
+navigator.platform     值得是操作系统平台
+navigator.vendor       浏览器厂商
+
+history 对象保存这用户上网的历史记录，从窗口被打开的那一刻算起。因为 history 是 window对象
+的属性，因此每个浏览器窗口、每个标签页乃至每个框架，都有自己的 history 对象与特定的 window对
+象关联。
+
+history具有以下几个方法:
+history.go()       后退或者前进
+history.back()     后退
+history.forword()  前进
+history 里面的方法必须要有参数，其参数是数值 n，表示前进几个(n)页面或者后退几个(n)页面。
+参数值 n ≥ 1。
+
+错误处理机制
+任何有影响力的 Web 应用程序都需要一套完善的错误处理机制。
+对于错误的处理方式有以下几点:
+try ... catch 语句能将引发错误的代码放在 try 块中，并且对应一个相应，然后有异常被抛出。
+处理一个特定错误的时候，可以通过判断错误的类型来处理某一类的异常，即判断 constructor 属性
+，当使用现代 Javascript 引擎时，可以使用 instanceof 关键字。
+格式如下:
+try{
+  xxx
+} catch(error){
+  if(error instanceof xxx){
+     xxx;
+  }
+}
+正常碰到错误代码不会继续往下运行，但是当有了完善的错误处理机制，并不会影响后面代码的运营问题。
+
+对于 Infinity 是一个数值，表示无穷大，任何数值(除了 Infinity 和 -Infinity)除以Infinity
+都等于 0。
+
+本地存储 sessionStorage
+sessionStorage 属性允许你访问一个 seeion Storage 对象。它与 localStorage 相似，不同之处
+在于 localStorage 里面存储的数据没有过期时间设置，而存储在 sessionStorage 里面的数据在页面
+会话结束时会被清除(即浏览器关闭时)。页面会话在浏览器打开期间一直保持，并且重新加载或恢复页面仍会
+保持原来的页面会话。
+其语法如下:
+保存数据到 sessionStorage:      sessionStorage.setItem("key","value");
+从sessionStorage 获得数据:      var data = sessionStorage.getItem("key");
+从sessionStorage 删除数据:      sessionStorage.removeItem("key");
+从sessionStorage 删除所有保存的数据:     sessionStorage.clear();
+
+localStorage 属性允许你访问一个 local Storage 对象。与sessionStorage不同，存储在
+localStorage 里面的数据没有过期时间。
+其语法如下:
+使用 Storage.setItem() 方法往里面添加一个数据项: localStorage.setItem("key","value");

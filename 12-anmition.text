@@ -1,0 +1,64 @@
+动画 animation 属性
+设置 animation 首先要创建动画序列
+
+@keyframes ___{
+  0%{
+    transform:
+  }
+  100%{
+    transform:
+  }
+}                ___是动画的名称.
+
+2.对应元素应用动画
+animation总的设置的时候需要设置的属性如下：
+1. animation-name  设置动画序列名称
+2. animation-duration  设置动画持续时间
+3. animation-delay  设置动画的延迟事件
+4. animation-timing-function 设置动画的执行速度
+5. animation-iferation-count 设置动画的执行次数 infinite等
+例： animation: run 5s infinite linear 1s;
+动画的第一时间是运行时间 第二个是延迟时间 这是固定的。
+
+如果要想使鼠标移入动画效果停止 要设置 (一定要找准停止动画的元素然后在加入 :hover)
+animation-play-state: paused;
+
+伸缩盒子
+在列表中 对ul设置display:flex; 属性 其子元素默认在一列
+只要想使父元素下的其余元素排列在一行 那么使用display:flex 就能实现 并具有伸缩效果
+对父元素设置 display:flex 表示为伸缩盒子
+
+flex-grow 属性 根据弹性盒子元素所设置的扩展因子作为比率来分配剩余空间
+可以对子元素 单个 设置其大小(占整个元素的比例)
+
+flex-shrink 属性 根据弹性盒子元素所设置的收缩因子作为比率来收缩空间。
+可以对子元素 单个 设置其大小 但是若要保持初始状态一样大 要对其设置 flex-grow:1
+
+flex-wrap 属性 控制flex容器是单行还是多行，同时横轴的方向决定了新行堆叠的方向
+其属性值有以下几个:
+nowrap : flex容器为单行，该情况下flex子项可能会溢出容器
+wrap : flex容器为多行。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行
+flex-wrap 设置分行的时候 根据情况设置height属性 如果设置的宽度比分行后的要宽，那么
+会自动根据当前的高度进行分行，就会出现空隙。
+
+flex-direction : 该属性通过定义flex容器的主轴方向来决定flex子项在flex容器中的位置。
+flex-direction 必须设置在当前元素的祖先元素上，也就是最外面的那个元素。
+这将决定flex需要如何进行排列 其属性值有以下几个:
+row : 默认的行内轴书写模式，即横向从左到右排列　(左对齐)。
+row-reverse :　对齐方式与row相反。
+column : 默认的行内书写模式，即纵向从上往下排列 (顶对齐)。
+column-reverse : 对齐方式与column相反。
+
+justify-content : 设置或检索弹性盒子在主轴(横轴)方向上的对齐方式。
+flex-start : 弹性盒子元素将向行起始位置对齐。
+flex-end   : 弹性盒子元素将向行结束位置对齐。
+center     : 弹性盒子元素将向行中间位置对齐。
+space-between : 弹性盒子元素会平均地分布在行里。
+space-around : 弹性盒子元素会平均地分布在行里，两端保留子元素与子元素之间间距大小的一半。
+
+align-items : 定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。
+flex-start : 弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
+flex-end : 弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
+center : 弹性盒子元素在该行的侧轴（纵轴）上居中放置。
+对于aline-items属性 可以对子元素单独设置，让不同的子元素排列在不同的位置，这时对单个元素
+设置就不能使用 align-items 对其中的单个元素设置需要使用 align-self属性，后面的属性值一样。

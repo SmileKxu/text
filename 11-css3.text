@@ -1,0 +1,64 @@
+渐进增强，优雅降级
+渐进增强: 根据低版本开发，对高版本服务器进行添加一些
+
+rgba 和 opacity 的区别。
+rgba 设置只对当前设置的颜色透明度发生调节 不会影响全局
+而opacity 会对当前父元素内所有后代元素颜色调节都受到影响
+
+text-shadow 属性一共有四个属性值
+1.x轴方向偏移量
+2.y轴方向偏移量
+3.阴影部分的模糊度 不允许为负值
+4.阴影部分颜色
+text-shadow 可以设置多个阴影效果，但要使用, 逗号连接
+
+border-radius属性在设置矩形的时候 要用 / 分开设置
+/ 左边的设置的为横轴的数值  / 右边的设置的为纵轴的数值
+
+
+box-shodow 属性值最多有六个属性值
+1.x轴方向偏移量
+2.y轴方向偏移量
+3.阴影部分的模糊度 不允许为负值
+4.模糊度的外延值
+5.阴影部分颜色
+6.如果设置 inset 那么其阴影就是内阴影效果
+box-shadow 也可以设置多个阴影效果，但要使用, 逗号连接
+
+box-sizing 属性
+当一个盒子设置了box-sizing: border-box; 属性的时候，那么这个盒子的大小则不会发生变化
+这时候设置padding 改变的是content的大小。
+
+background-size 属性
+设置图片的大小
+
+background-origin 属性
+背景图片默认是从边框开始的 包含padding 和 content
+
+css3过渡
+transition属性
+transition总体设置一共有四个属性值
+transition-property 设置过渡属性
+transition-duration 设置过渡时间
+transition-timing-Function 设置过渡速度
+transition-delay 设置过渡延时
+当transition一起设置的时候 也是按照这四个属性一起设置
+例 transition: all 0.5s linear 0.1s;
+
+css3 2D 和 3D转换
+移动 translate(x, y)可以改变元素的位置，x , y 可以为负值
+缩放 scale(x, y) 可以对元素进行水平和垂直方向的缩放， x, y的值可以为小数，其原来位置为scale(1, 1);
+旋转 rotate(deg) 可以对元素进行旋转， 正值为顺时针，负值为逆时针。
+倾斜 skew(deg,deg) 可以使元素按照一定角度倾斜。
+
+scale 设置当前元素大小比例 大小变化是其以中心为参考点进行变化
+translate 是相对于自己进行偏移
+用于设置 3D 效果 要对其父元素设置一个 transform-style:preserve-3d; 的属性
+3D 转换，设置观察者于z的距离，必须设置在需要3D转换的元素的父元素上设置
+perspective:1000px;  这个属性值设置的越大说明z轴离我们的距离越远
+
+在使用 translate 调节子元素居中父元素(在不知道宽高的情况下)
+先对父元素设置position:relative;然后对当前内子元素设置绝对定位
+position:absolute; 然后直接 top:50%; left:50%, 然后在使用
+transform:translate(-50%,-50%),相对自身像左移动，就能实现居中
+的效果.

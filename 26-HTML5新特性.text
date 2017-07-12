@@ -1,0 +1,99 @@
+HTML5新增标签
+HTML5新增语义化标签，可以让浏览器爬虫更好的解析，更好的分析内容，使用语义化的标签更便于
+搜索引擎的搜索。
+
+HTML5新增标签都是块级元素，均独占一行。
+
+HTML5新增标签有如下标签: header 标签 footer 标签 section 标签 article 标签 和 nav 标签
+以上几个标签均为 双标签。
+
+关于 form 表单新增标签和属性，都是非常方便的标签。
+form新增标签 email， 其 form 的新增标签都是 input 标签中的 type 属性值不同，新增的 email
+输入的内容必须是含有 @ 的邮箱类型。
+
+如果想指定输入的邮箱范围，可以使用 pattern属性 其属性值是规定的正则表达式，不用写双斜线直接""
+内容范围就可以。
+
+pattern: 指定输入内容的格式，必须按照指定的要求规范来书写。其规范使用正则表达式的方式规定。
+
+对于邮箱这种有一定书写格式的标签，可以提供选项直接使用，使用 datalist 设置其需要的书写内容，
+在要需要设置有提供选型的标签中，输入一个 list = "name(名字)"， 然后在这个标签的后面输入
+datalist 双标签，对 datalist 标签设置一个 id 其 id 就等与 list 的 name，然后在其内部
+设置 option 标签，并不需要value值，option的内容就是其提供的选项内容，根据其 pattern 的范围
+来书写 option 标签里的内容。
+
+对于 email 和 url 这种自动校验的标签，对其添加一个属性 novalidate 使用后就可以取消自动校验。
+
+
+新增 url 标签，只可以输入一个正确的完整的网址，不可以输入其他东西，要严格按照网页格式。
+
+新增 number 标签， number 标签 输入的只能为一个数字， 其值的范围可以设置，每次增减的值也可以
+设置，最小值 min = "xxx" 最大值 max = "xxx" 每次的差值 step = "xxx" 就可以了。
+
+新增 range 标签，是音量标签，打印出来会有一个调节音量的样式，也可以设置其范围。
+
+新增属性 autofocus 是布尔属性 直接写名字就行， 自动获得光标，只能对一个标签设置，设置多个无效，
+只对第一个有效。
+
+新增属性 multiple ，这个是专门对于 file 上传文件的标签负责多选文件用的，不加的话只能上传一个
+文件。
+
+新增属性 required ，对于设置了 required 的标签，表示该标签必须填写内容，否则不能提交。
+
+整理结果如下:
+新增标签有:
+email: <input type="email" name="email" value="">
+number: <input type="number" name="number" value="">
+url: <input type="url" name="url" value="">
+range: <input type="range" name="range" value="">
+file: <input type="file" multiple name="file" value="">
+
+新增属性(布尔属性 与 带值的属性)
+novalidate 布尔属性 : 取消默认的自动校验
+autofocus 布尔属性 : 只对第一个设置该属性的标签有效，自动获得焦点。
+datalist 双标签: 为所需标签提供默认选项，需要默认选项的标签需要设置一个 list 并带有 name，而
+这个name 就是 datalist 上 id 的名字，其提供的内容都写在其 option 标签内，不需要 value 值。
+required 布尔属性 : 所有的标签设置了 required 属性表示该标签内容为必填的，不填写无法提交。
+pattern 带值的属性 : pattern 是制定该标签的校验内容，可以为其添加校验内容，其值是使用正则
+表达式来规范的一个范围，这个正则表达式不需要写在//内，直接写在""内部就可以了。
+min、max、step 设置数字范围 和 增减数值 : 主要对 number标签 和 range 这种标签进行设置，可
+设置最小值与最大值和每次点击增减的那个数值。
+
+对于新增的 video 和 audio 标签也是新增的属性标签，它们也有一些特殊的属性值。
+audio 是一个双标签，其内部需要写一个 source 标签，其 source的 src 就是音频资源的路径，为了
+针对不同浏览器的资源选择不同，就需要多写几个 source 标签，其格式分别为 mp3格式 和 ogg 格式。
+
+video 与 audio 标签一样也是一个双标签，其视频资源也要写在其内部的 source 标签内部。
+
+直接书写的 video 或者 audio 标签在浏览器打开不会看到任何控制面板，这就需要一个属性controls，
+加上这个属性在浏览器打开就可以看到浏览器默认的控制面板了。
+
+autoplay 属性，设置在 video 或者 audio 标签内部，效果 : 实现视频或音频自动播放。
+loop 属性，设置在 video 或者 audio 标签内部， 效果 : 实现视频或音频循环播放。
+poster 属性，设置在 video 上的属性， 效果 : 为当前视频添加一个封面。
+
+对于 video 和 audio 标签其操作事件都有以下几个:
+控制其播放和结束播放 : 首先先获得 audio 和 video 的DOM节点,这里就以 audio 和 video当做
+获得到的 DOM节点。
+play() 和 pause() 方法主要是控制视频的开始和结束。
+video.play();视频开始播放。  video.pause();视频停止播放。
+
+muted 是用来控制 audio 和 video 是否静音，他是DOM对象上的一个属性，其设置直接
+video.muted 就表示静音。
+
+playbackRate 是用来控制 audio 和 video 的速度的，调节频率是( 0 - 1 )之间。
+
+currentTime 是用来调节 audio 和 video 的播放位置的，当前位置前进几秒或者后退几秒。
+
+对于 video ，设置其全屏的方法是 requestFullscreen(); 但是对于不同浏览器的默认情况不同，所
+以就用以下的封装函数来封装起来。
+
+function fullScreen(elem){
+  if(elem.requestFullscreen){
+    elem.requestFullscreen();
+  } else if(elem.mozRequestFullscreen){
+    elem.mozRequestFullScreen();
+  } else if(elem.webkitRequestFullscreen){
+    elem.webkitRequestFullscreen();
+  }
+}
