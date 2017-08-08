@@ -25,7 +25,7 @@ node.js 程序由事件循环开始，到事件循环结束，所有的逻辑都
 状态或者消息来通知调用口，或者通过已定的回调函数来处理调用结果。
 
 ## 4.node.js 常用的全局变量
-console, process, Buffer, global, __filename(当前绝对路径下文件名)，__dirname(当前文件绝地哦路径目录) 
+console, process, Buffer, global, __filename(当前绝对路径下文件名)，__dirname(当前文件绝地哦路径目录) <br>
 global:最根本的作用是为全局变量的宿主，表示 Node 所在的全局环境。<br>
 process:该对象表示 Node 所处的当前进程，允许开发者与该进程互动。<br>
 console:指向 Node 内置的 console 模块，提供命令行环境中的标准输入、标准输出功能。
