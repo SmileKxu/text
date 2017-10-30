@@ -32,13 +32,19 @@ textarea也属于form表单内的标签，
 在jquery代码中 return false; 可以阻止表单上传。
 
 表单事件：
+
 .focus() 与 .blur() 的效果为获得焦点或者失去焦点
+
 .submit() 事件 可以在表单数据发送时截取数据不让数据发送 判断数据是否书写正确
 输入 return false; 就可以阻止表单数据提交。
-.change() 事件 一个元素的值改变的时候将触发change事件。
+
+.change() 事件 在元素失去焦点时候将触发change事件。
+
 对于<input> 标签来说 $(this).val() 获取的是其内容
+
 对于<select> 标签内的 <option> 标签来说 $(this).val()获得的是<option>标签所设置的
 value值。在<select> .change()事件的函数中，要填写event获取。
+ 
 获取radio 和 checkbox 的值要使用 checked获取 使用时要在选到的类后面接 :checked就可以
 
 console.log() 可以打印变量结果 与其结果相似的还有 console.info() 和 console.error();
