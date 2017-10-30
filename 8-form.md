@@ -1,4 +1,5 @@
-form表单
+#### form表单
+
 在HTML中，form标记被用于定义表单域，即创建一个表单。
 form是一个双标签，其具体属性有action method和name。
 action: 属性用于指定接受和处理表单数据服务器程序的url地址。
@@ -45,3 +46,6 @@ console.log() 可以打印变量结果 与其结果相似的还有 console.info(
 在使用event.data()的时候，要在一个for循环里，将迭代变量i的值传递给on()方法，保留当前迭代
 的值，也就是在事件的函数前面先传入一个i 然后, 接function如下
  $("button").eq(i).click(i, function(){ });
+ 
+对于 input 和 textarea 标签，可以注册 oninput事件和onchange事件，oninput 事件在元素值发生变化是立即触发， onchange 在元素失去焦点时触发，
+selector标签也可以注册 onchange事件。
