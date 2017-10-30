@@ -1,4 +1,4 @@
-盒子模型
+#### 盒子模型
 
 width 和 height 设置的是内容的宽高
 
@@ -35,6 +35,7 @@ float浮动
 同时获得行内块元素的特点。
 
 clearfix清除浮动的办法主引入了伪元素after与before,(引入伪元素必须设置content属性)；
+```
 .clearfix::after, .clearfix::before{
    content:"";
    line-height:0;
@@ -45,6 +46,7 @@ clearfix清除浮动的办法主引入了伪元素after与before,(引入伪元�
 .clearfix{
   z-index:1 //兼容ie
 }
+```
 
 display属性 (display属性可以让块元素和行内元素任意转换)
 display:inline-block属性可以把块元素变成行内块元素不独占一行，但具有块元素的特点
@@ -109,3 +111,13 @@ css Hack
 Hack 来解决浏览器的兼容性问题。而这个针对不同的浏览器写不同的css代码的过程，就叫CSS Hack。
 
 CSS Hack常见的有三种模式：CSS属性Hack、CSS选择符Hack以及IE条件注释，Hack主要针对IE浏览器。
+
+CSS 三栏布局的几种方法:
+
+1.左右两边设置浮动(左浮和右浮动)，然后中间部分设置width:100%即可。
+
+2.左右两边设置绝对定位(左边为left:0;右边为right:0)，中间部分width:100%;需要设置一个box-sizing:border-box;然后在设置一个与左右宽度相符
+的padding就可以。
+
+3.写一个大的div(box),对box设置display:flex;然后box里面左右两边设置flex-shrink:0;中间部分设置width:100%即可。
+
