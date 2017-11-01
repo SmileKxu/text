@@ -64,4 +64,64 @@ INSERT Products (ProductID, ProductName, Price)
     VALUES (3000, '3mm Bracket', .52)  
 GO  
 ```
-
+### 更新products 表
+1. 键入并执行以下 ```UPDATE``` 语句，将第二种产品的 ```ProductName``` 从 ```Screwdriver```更改为```Flat Head Screwdriver```
+```
+UPDATE dbo.Produces
+    SET ProductName = 'Flat Head Screwdriver'
+    WHERE ProductID = 50
+GO    
+```
+### 读取表中的数据
+1. 键入并执行以下语句以读取 ```Products```表中的数据。
+```
+-- The basic syntax for reading data from a single table  
+SELECT ProductID, ProductName, Price, ProductDescription  
+    FROM dbo.Products  
+GO  
+```
+2. 可以使用星号选择表中所有列。
+```
+SELECT * FROM Products
+GO
+```
+3. 可以省略不希望返回的列。列将按列出它们的顺序返回。
+```
+-- Returns only two of the columns from the table  
+SELECT ProductName, Price  
+    FROM dbo.Products  
+GO  
+```
+4. 使用```WHERE```子句可以限制返回给用户的行。
+```
+-- Returns only two of the records in the table  
+SELECT ProductID, ProductName, Price, ProductDescription  
+    FROM dbo.Products  
+    WHERE ProductID < 60  
+GO  
+```
+5. 可以在返回列中的值时使用它们，以下示例对 ```Price```列执行数学运算。除非通过使用```AS```关键字提供一个名称，
+否则以此方式更改的列将没有名称。
+```
+-- Returns ProductName and the Price including a 7% tax  
+-- Provides the name CustomerPays for the calculated column  
+SELECT ProductName, Price * 1.07 AS CustomerPays  
+    FROM dbo.Products  
+GO  
+```
+### 删除权限和对象
+1. 在删除对象之前，请确保使用正确的数据库:
+```
+USE TestData;
+GO
+```
+2. 使用```DELETE```语句删除```Products```表中的所有行:
+```
+DELETE FROM Products;  
+GO  
+```
+3. 使用```DROP```语句删除```Products```表:
+```
+DROP Table Products;  
+GO  
+```
