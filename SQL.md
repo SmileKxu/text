@@ -125,3 +125,41 @@ GO
 DROP Table Products;  
 GO  
 ```
+
+### 使用 mssql 模块连接sql server数据库 代码如下:
+```
+var sql = require('mssql');
+//连接方式1: 'mssql://用户名:密码@ip地址(无需端口号)/SqlServer名/数据库名称'
+//连接方式2: 'mssql://用户名:密码@ip地址/数据库名称'
+sql.connect('mssql://SA/:123@localhost').then(function(){
+   // Query
+   new sql.Request().query('select * from sys_user').then(function(recordset){
+         console.log(recordset);
+   }).catch(function(err){
+       console.log(err);
+   });  
+   // Stored Procedure
+}).catch(function(err){
+   console.log(err);
+})
+```
+
+### SqlServer查询表中各列名称、表中列数
+
+查询表名为 tb_menu 的所有列名
+```
+select name from syscolumns where id=object_id('tb_menu')
+```
+查询表名为tb_menu的所有列名个数
+```
+select count(name) from syscolumns where id=object_id('tb_menu')
+```
+或者
+```
+select count(syscolumns.name)
+from syscolumns , sysobjects
+where syscolumns.id=sysobjects.id  and sysobjects.name = 'tb_menu'
+```
+
+
+
