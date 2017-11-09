@@ -160,6 +160,41 @@ select count(syscolumns.name)
 from syscolumns , sysobjects
 where syscolumns.id=sysobjects.id  and sysobjects.name = 'tb_menu'
 ```
+### sql server 复制表结构
 
+说明: 复制表(只复制结构,源表名:a 新表明: b)
+```
+SQL: select * into b from a where 1<>1
+```
 
+### 添加,删除字段
 
+通用式:
+```
+alter table [表名] add [字段名] 字段属性 default 缺省值 default 是可选参数
+```
+增加字段:
+```
+alter table [表名] add 字段名 smallint default 0 增加数字字段，整型，缺省值为0   
+alter table [表名] add 字段名 intdefault 0 增加数字字段，长整型，缺省值为0  
+alter table [表名] add 字段名 singledefault 0 增加数字字段，单精度型，缺省值为0   
+alter table [表名] add 字段名 doubledefault 0 增加数字字段，双精度型，缺省值为0  
+alter table [表名] add 字段名Tinyint default 0 增加数字字段，字节型，缺省值为0  
+  
+alter table[表名] add 字段名 text [null] 增加备注型字段,[null]可选参数  
+alter table [表名] add 字段名 memo[null] 增加备注型字段,[null]可选参数  
+  
+alter table[表名] add 字段名 varchar(N) [null] 增加变长文本型字段大小 为N(1～255)  
+alter table [表名] add 字段名 char[null] 增加定长文本型字段 大小固定为255  
+  
+alter table[表名] add 字段名 Datetime default 函数 增加日期型字段，其中函数 可以是 now(),date()等，表示缺省值  
+(上面都是最常用的，还有其他的属性，可以参考下面的数据类型描述)  
+```
+删除字段:
+```
+alter table [表名] drop 字段名
+```
+修改变长文本型字段的大小:
+```
+alter table [表名] alter 字段名 varchar(N)
+```
