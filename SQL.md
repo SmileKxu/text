@@ -206,3 +206,12 @@ alter table [表名] alter 字段名 varchar(N)
 ```
 select count(*) from tableName
 ```
+### sql server 两张表筛选相同数据和不同数据
+相同数据
+```
+select [字段名] from [表名] intersect select [字段名] from [表名]
+```
+不同数据
+```
+select [字段名] from [表名] except select [字段名] from [表名]
+```
