@@ -167,7 +167,7 @@ where syscolumns.id=sysobjects.id  and sysobjects.name = 'tb_menu'
 SQL: select * into b from a where 1<>1
 ```
 
-### 添加,删除字段
+### 添加,删除,修改字段
 
 通用式:
 ```
@@ -194,7 +194,15 @@ alter table[表名] add 字段名 Datetime default 函数 增加日期型字段�
 ```
 alter table [表名] drop column 字段名
 ```
+修改字段:
+```
+alter table [表名] alter column [字段名] nvarchar (50) null
+```
 修改变长文本型字段的大小:
 ```
 alter table [表名] alter 字段名 varchar(N)
+```
+### 查询当前表的数据条数
+```
+select count(*) from tableName
 ```
