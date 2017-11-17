@@ -200,7 +200,7 @@ alter table [表名] alter column [字段名] nvarchar (50) null
 ```
 修改变长文本型字段的大小:
 ```
-alter table [表名] alter 字段名 varchar(N)
+alter table [表名] alter column [字段名] varchar(N)
 ```
 ### 查询当前表的数据条数
 ```
