@@ -215,3 +215,7 @@ select [字段名] from [表名] intersect select [字段名] from [表名]
 ```
 select [字段名] from [表名] except select [字段名] from [表名]
 ```
+### 同一字段下出现重复数据查询方式
+```
+select * from TableName where name in (select name from TableName group by name having COUNT(*)>1)
+```
