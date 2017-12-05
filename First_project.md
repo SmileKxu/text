@@ -55,3 +55,59 @@ sql.connect('mssql://sa:sql_password@localhost/DATABASE').then(function(){
    console.log('catcherr:' + err);
 })
 ```
+4. 使用递归方式存取数据(防止数据丢失)。
+```
+var i = -1;
+loop();
+function loop(){
+   i++;
+   if(xxx[i]){
+   console.log('i == ', i);
+   
+   // data 部分
+   
+    var dat = 'INSERT INTO TABLENAME VALUES(data)';
+    new sql.Request().query(dat).then(function(){
+      loop();
+    })
+   }
+}
+```
+5. 接口部分。
+```
+var md5 = crypto.createHash('md5');
+var password = md5.update('#$&'+xxx_ID+'&&#').digest('hex'); // xxx_ID(两边需要一致)是纯number或者是数值的string
+var key = CryptoJS.HmacSHA1(password, 'xxx');
+var base = new Base64(); // Base64()是加密函数
+var result3 = base.encode(key.toString());
+
+var options = {
+  method: 'PUT', //根据对应API决定method方法(POST, GET)
+  url: 'https://xxx.xxx.xxx' //接口部分 API 
+  headers:{
+    //headers 中为接口部分对应部分，可以通过postman获取，或者对面接口人员提供。
+    'postman-token': 'xxx',
+    'cache-control': 'no-cache',
+    'content-type': 'application/json'
+  },
+  body:{
+    //body中则是向对面发送的内容
+    name: 'Lisi',
+    age: 18,
+    hobby: 'study',
+    token: result3
+  },
+  json: true
+};
+
+request(options, function(error, response, body) {
+   if(!error){
+      console.log(body); // body 为接口调用成功后返回的内容
+   } else {
+      console.error(error); // error 为接口调用失败后返回的内容
+   }
+});
+```
+### 整体逻辑
+读取del文件获得data，然后对data进行处理，本地数据库创建两张表格，数据存储分为首次导入和后续导入，
+
