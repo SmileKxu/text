@@ -37,7 +37,7 @@ var j = schedule.schedulJob(rule, function(){
     console.log('执行任务');
 });
 ```
-4. 没秒执行
+4. 每秒执行
 ```
 var rule = new schedule.RecurrenceRule();
 var times = [];
