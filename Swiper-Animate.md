@@ -28,7 +28,9 @@ Swiper4.x。 此插件不适用于loop模式
  <script>
  //Swiper4.x
    let mySwiper = new Swiper('.swiper-container', {
-      on:{
+    
+      direction: 'vertical', // 纵向分屏，不加的话默认为横向
+      on:{
         init: function(){
           swiperAnimateCache(this); //隐藏动画元素
           swiperAnimte(this); //初始化完成开始动画
@@ -52,5 +54,19 @@ swiper-animate-delay: 可选，动画延迟时间(单位秒)，例如 0.3s
 <p class='ani' swiper-animate-effect='fadeInUp' swiper-animate-duration='0.5s' swiper-animate-delay='0.3s'>内容</p>
 </div>
 ```
+
+### 使用swiper后body内的结构大致如下
+```html
+<body>
+    <div class="swiper-container">
+        <div>
+            <section class='swiper-slide'>slider1</section>
+            <section class='swiper-slide'>slider2</section>
+            <section class='swiper-slide'>slider3</section>
+        </div>
+    </div>
+</body>   
+```
+大致的代码逻辑就是这样，每一个包含swiper-slide的section标签就会是一个页面，这个标签内可以写实现动画效果的部分。
 
 
