@@ -69,5 +69,52 @@ otherWindow.postMessage(message, targetOrigin);
  </html>
 ```
 下面是主页面内iframe的页面的代码:
+```html
+<DOCTYPE!>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <tittle></tittle>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <h2></h2>
+  
+  <script>
+    let h2 = document.querySelector('h2');
+    window.addEventListener('message', (event) => {
+      console.log('event.origin = ', event.origin);
+      console.log('event.data = ', event.data);
+      console.log('event.source = ', event.source);
+ 
+      if(event.origin != 'http://192.168.1.142:3000'){
+        return;
+      }
+ 
+      h2.innerHTML = '从' + event.origin + '那里传来的消息。<br>\'' + event.data + '\'';
+ 
+      event.source.postMessage('您好，这里是' + this.location, event.origin);
+      
+    }, false);
+  
+  </script>
+  </body>
+</html>
+```
+
+下面对本示例中几个关键之处进行补充说明。
+1. 通过对window对象的message事件进行监听，可以接收消息。
+2. 通过访问message事件的origin属性，可以获取消息的发送源(发送源只包括域名和端口号，为了不接收其他源恶意
+   发送过来的消息，最好对发送源做个检查)。
+3. 通过访问message事件的data属性，可以获取消息内容(可以是任何JavaScript对象)。
+4. 使用postMessage方法发送消息。
+5. 通过访问message事件的source属性，可以获取消息发送源的窗口对象(准确地说，应该是窗口代理对象)。
+
+
+
+
+
+
+
 
 
