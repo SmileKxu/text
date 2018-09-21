@@ -51,4 +51,16 @@
 ```
 然后就可以根据客户的要求来进行代码的编写以及页面的布局，大多数都是图片的动画效果。
 
+对于苹果手机alert弹出提示带链接取消方法
+```js
+window.alert = function(name) {
+		var iframe = document.createElement("IFRAME");
+		iframe.style.display = "none";
+		iframe.setAttribute("src", 'data:text/plain,');
+		document.documentElement.appendChild(iframe);
+		window.frames[0].window.alert(name);
+		iframe.parentNode.removeChild(iframe);
+	}
+```
+
 
